@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Note For My Baby</title>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+<style>
+@font-face {
+    font-family: 'PixelFont';
+    src: url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+}
+
+body {
+    font-family: 'PixelFont', monospace;
+    background-image: url('0f0mr45abb.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    background-color: rgba(255,255,255,0.85);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 600px; /* Increased width */
+    max-width: 95%;
+    max-height: 90vh; /* Prevent overflow on small screens */
+    overflow-y: auto; /* Allow scrolling */
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.pixel-bunny {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-image: url('6iqb940t57.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+}
+
+.title {
+    font-size: 24px;
+    color: #FF69B4;
+    line-height: 1.5; /* Better line height */
+}
+
+.subtitle {
+    font-size: 12px;
+    color: #FF69B4;
+    opacity: 0.8;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    margin: 0.5rem;
+    border-radius: 8px;
+    border: 2px solid #000;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-size: 14px; /* Ensure button text is readable */
+}
+
+.btn:hover { transform: translateY(-3px); }
+
+.btn-white { background: white; color: #FF69B4; }
+.btn-pink { background: #FF69B4; color: white; }
+
+#no-page, #letter-page { display: none; }
+
+.paper {
+    background-image: url('https://public.youware.com/users-website-assets/prod/7991ddd6-9a0f-45f9-8685-784504ae6371/783b365f029f4b7aa0204931390295b7.png');
+    background-size: cover;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: left;
+    color: #d14d8b;
+    position: relative;
+    font-size: 12px; /* Smaller font for letter content */
+    line-height: 1.8; /* Better readability */
+}
+
+.ribbon {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    background-image: url('0f0mr45abb.jpg');
+    background-size: cover;
+    border-radius: 50%;
+    transform: rotate(-15deg);
+}
+
+.boy-circle {
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    width: 80px;
+    height: 80px;
+    background-image: url('c:\Users\Lalisa (Guess Acct)\Desktop\webweb\cat.jpg'); /* Updated to cat.jpg */
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    border: 3px solid #FF69B4;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.falling-symbols {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.symbol {
+    position: absolute;
+    font-size: 16px;
+    animation: fall linear infinite;
+    opacity: 0.7;
+}
+
+.symbol:nth-child(1){left:10%; animation-duration:4s;}
+.symbol:nth-child(2){left:20%; animation-duration:5s;}
+.symbol:nth-child(3){left:30%; animation-duration:6s;}
+.symbol:nth-child(4){left:40%; animation-duration:4.5s;}
+.symbol:nth-child(5){left:50%; animation-duration:5.5s;}
+.symbol:nth-child(6){left:60%; animation-duration:4s;}
+.symbol:nth-child(7){left:70%; animation-duration:6s;}
+.symbol:nth-child(8){left:80%; animation-duration:5s;}
+.symbol:nth-child(9){left:90%; animation-duration:4.5s;}
+
+@keyframes fall {
+    0% { transform: translateY(-100px); opacity: 0; }
+    10% { opacity: 0.7; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+
+.plsss {
+    font-size: 24px;
+    color: #d14d8b;
+    font-weight: bold;
+}
+
+.kaomoji {
+    color: #FF69B4;
+    margin: 10px 0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="falling-symbols">
+    <div class="symbol">♡</div><div class="symbol">✿</div><div class="symbol">❀</div>
+    <div class="symbol">✾</div><div class="symbol">♡</div><div class="symbol">✿</div>
+    <div class="symbol">❀</div><div class="symbol">✾</div><div class="symbol">♡</div>
+</div>
+
+<div class="game-container" id="main-page">
+    <div class="pixel-bunny"></div>
+    <h1 class="title">would you like to read it? (˶˃ ᵕ ˂˶)</h1>
+    <div class="kaomoji">o̴̶̷ ·̭ o̴̶̷̥</div>
+    <button class="btn btn-white" id="no-btn">hell nah!</button>
+    <button class="btn btn-pink" id="yes-btn">yes i will!</button>
+</div>
+
+<div class="game-container" id="no-page">
+    <h1 class="plsss">𝐏𝐋𝐒𝐒𝐒𝐒</h1>
+    <div class="kaomoji">(╥﹏╥)</div>
+    <button class="btn btn-pink" id="okays-btn">fine</button>
+</div>
+
+<div class="game-container" id="letter-page">
+<div class="paper">
+<div class="boy-circle"></div>
+
+<div id="page-1">
+<p class="mb-4">happy new year, my beloved half. i don’t really know how to start this message—or this year—but first of all, i’m sorry this came a little late. you know how i didn’t get enough sleep today, so i wasn’t able to finish coding this agad. but even if it took time, i really wanted to do this for you.</p>
+
+<p class="mb-4">i just want to say how grateful i am that my 2025 ended with you, and that my 2026 also started with you. not literally by my side right now, but still, it’s you. and i really hope that in the coming years, we won’t have to spend the holidays away from each other anymore. i’m looking forward to that day, slowly but surely.</p>
+<div style="text-align: right;">
+    <button class="btn btn-pink" id="next-btn">Next</button>
+</div>
+</div>
+
+<div id="page-2" style="display: none;">
+<p class="mb-4">i also want to say sorry if i only sent you a message nung christmas. alam mo naman, i value new year more than christmas hehe. for me, it feels more meaningful—it’s like choosing who i want to start another year with. and that’s you. that’s why i made this little effort, especially since sabi mo nga, hindi tayo magkasama so hindi tayo makakapagsulat ng letter.</p>
+
+<p class="mb-4">thank you for being my constant, my comfort, and my safe place. thank you for staying, for understanding me even when i’m quiet, and for loving me in ways that feel gentle and real. i may not always say everything perfectly, but please know that you mean so much to me.</p>
+
+<p class="mb-4">i’m entering this year with hope, patience, and love—most of all, with you in my heart. happy new year, my love. here’s to more memories, more growth, and more us this 2026. 🤍</p>
+<div style="text-align: left;">
+    <button class="btn btn-pink" id="prev-btn">Prev</button>
+</div>
+<div class="ribbon"></div>
+</div>
+
+</div>
+
+<button class="btn btn-pink mt-4" id="back-btn">back</button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const main = document.getElementById('main-page');
+    const noPage = document.getElementById('no-page');
+    const letter = document.getElementById('letter-page');
+    const page1 = document.getElementById('page-1');
+    const page2 = document.getElementById('page-2');
+
+    document.getElementById('no-btn').onclick = () => {
+        main.style.display = 'none';
+        noPage.style.display = 'block';
+    };
+
+    document.getElementById('yes-btn').onclick = () => {
+        main.style.display = 'none';
+        letter.style.display = 'block';
+        // Reset to page 1
+        page1.style.display = 'block';
+        page2.style.display = 'none';
+    };
+
+    document.getElementById('okays-btn').onclick = () => {
+        noPage.style.display = 'none';
+        main.style.display = 'block';
+    };
+
+    document.getElementById('back-btn').onclick = () => {
+        letter.style.display = 'none';
+        main.style.display = 'block';
+    };
+
+    document.getElementById('next-btn').onclick = () => {
+        page1.style.display = 'none';
+        page2.style.display = 'block';
+    };
+
+    document.getElementById('prev-btn').onclick = () => {
+        page2.style.display = 'none';
+        page1.style.display = 'block';
+    };
+});
+</script>
+
+</body>
+</html>
