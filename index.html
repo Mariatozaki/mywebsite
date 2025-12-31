@@ -80,15 +80,25 @@ body {
 #no-page, #letter-page { display: none; }
 
 .paper {
-    background-image: url('https://public.youware.com/users-website-assets/prod/7991ddd6-9a0f-45f9-8685-784504ae6371/783b365f029f4b7aa0204931390295b7.png');
-    background-size: cover;
+    position: relative;
     padding: 2rem;
     border-radius: 8px;
     text-align: left;
-    color: #d14d8b;
-    position: relative;
+    color: #FF1493; /* Deep Pink for intensity and readability */
     font-size: 12px; /* Smaller font for letter content */
     line-height: 1.8; /* Better readability */
+    z-index: 1;
+}
+
+.paper::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('https://public.youware.com/users-website-assets/prod/7991ddd6-9a0f-45f9-8685-784504ae6371/783b365f029f4b7aa0204931390295b7.png');
+    background-size: cover;
+    opacity: 0.4; /* Lighter transparency */
+    border-radius: 8px;
+    z-index: -1;
 }
 
 .ribbon {
@@ -109,13 +119,20 @@ body {
     left: -30px;
     width: 80px;
     height: 80px;
-    background-image: url('https://public.youware.com/users-website-assets/prod/7991ddd6-9a0f-45f9-8685-784504ae6371/08b6ba0576244cfe80e62e3f3f59c81d.gif'); /* Updated to animated cat GIF */
-    background-size: cover;
-    background-position: center;
     border-radius: 50%;
     border: 3px solid #FF69B4;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boy-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .falling-symbols {
@@ -185,12 +202,17 @@ body {
 
 <div class="game-container" id="letter-page">
 <div class="paper">
-<div class="boy-circle"></div>
+<div class="boy-circle">
+    <img src="https://public.youware.com/users-website-assets/prod/7991ddd6-9a0f-45f9-8685-784504ae6371/08b6ba0576244cfe80e62e3f3f59c81d.gif" alt="cat">
+</div>
 
 <div id="page-1">
 <p class="mb-4">happy new year, my beloved half. i don’t really know how to start this message—or this year—but first of all, i’m sorry this came a little late. you know how i didn’t get enough sleep today, so i wasn’t able to finish coding this agad. but even if it took time, i really wanted to do this for you.</p>
 
 <p class="mb-4">i just want to say how grateful i am that my 2025 ended with you, and that my 2026 also started with you. not literally by my side right now, but still, it’s you. and i really hope that in the coming years, we won’t have to spend the holidays away from each other anymore. i’m looking forward to that day, slowly but surely.</p>
+
+<p class="mb-4">i may not be a very vocal nor sweet person, but i want you to know that everything you do, no matter how small, makes a difference. the way you care, the way you make me laugh, the little things you remember—they all matter to me more than you probably realize. having you in my life makes ordinary days feel special, and i hope i can make you feel the same way too.</p>
+
 <div style="text-align: right;">
     <button class="btn btn-pink" id="next-btn">Next</button>
 </div>
@@ -258,6 +280,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
-
-
-
